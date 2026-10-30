@@ -1,0 +1,59 @@
+{
+  "name": "google-flow-browser-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A local MCP server for user-assisted Google Flow browser workflows.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitjcl/google-flow-mcp.git"
+  },
+  "homepage": "https://github.com/hitjcl/google-flow-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/hitjcl/google-flow-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "google-flow",
+    "claude-code",
+    "browser-automation"
+  ],
+  "bin": {
+    "google-flow-mcp": "dist/src/index.js"
+  },
+  "files": [
+    "dist/src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json && node dist/src/index.js",
+    "start": "node dist/src/index.js",
+    "test": "npm run build && node --test dist/test/state.test.js dist/test/server.test.js dist/test/stdio.test.js",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run check && npm test",
+    "prepack": "npm run build",
+    "health": "node scripts/health-check.mjs",
+    "backup": "node scripts/backup-state.mjs",
+    "smoke": "node scripts/production-smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "playwright-core": "1.62.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "packageManager": "pnpm@10.32.1"
+}

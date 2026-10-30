@@ -1,0 +1,12 @@
+# Dependencias: se instalan con instalar.ps1 (npm ci)
+node_modules/
+
+# Datos de uso: nunca se suben. browser-profile guarda la sesión de Google.
+browser-profile/
+downloads/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+state.json
+.env
+.env.*
